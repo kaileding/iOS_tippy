@@ -13,6 +13,10 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var settingsTable: UITableView!
     let simpleTableIdentifier = "SimpleTableIdentifier"
     
+    @IBOutlet weak var numSlider: UISlider!
+    @IBOutlet weak var sliderIndicator: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +35,9 @@ class SettingsTableViewController: UITableViewController {
         let oldIndexPath = NSIndexPath(forRow: oldSel, inSection: 0)
         let oldCell = self.settingsTable.cellForRowAtIndexPath(oldIndexPath)
         oldCell?.accessoryType = .Checkmark
+        let oldNum = defaults.integerForKey("defaultPeopleNumberSelection")
+        self.sliderIndicator.text = "\(oldNum)"
+        self.numSlider.setValue(Float(oldNum), animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,8 +45,11 @@ class SettingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
+    
+    /*
+    // MARK: - User Interactions
+    */
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = self.settingsTable.cellForRowAtIndexPath(indexPath)
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -51,14 +61,14 @@ class SettingsTableViewController: UITableViewController {
         defaults.synchronize()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func sliderChanged(sender: UISlider) {
+        let progress = lroundf(sender.value)
+        self.sliderIndicator.text = "\(progress)"
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setInteger(progress, forKey: "defaultPeopleNumberSelection")
+        defaults.synchronize()
     }
-    */
-
+    
+    
+    
 }

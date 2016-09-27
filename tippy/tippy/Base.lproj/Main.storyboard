@@ -69,6 +69,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Default number of people" id="lY6-Kc-dEc">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KxL-DK-4hX">
+                                        <rect key="frame" x="0.0" y="313" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KxL-DK-4hX" id="Ce5-jV-3YQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="30" id="S4E-sy-MS7">
+                                                    <rect key="frame" x="56" y="7" width="258" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="sliderChanged:" destination="980-Ab-vPX" eventType="valueChanged" id="aVo-Ga-RBA"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YJh-90-sB2">
+                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="980-Ab-vPX" id="fos-R8-N9a"/>
@@ -77,7 +105,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="OpM-LP-bey"/>
                     <connections>
+                        <outlet property="numSlider" destination="S4E-sy-MS7" id="V5m-vr-zkY"/>
                         <outlet property="settingsTable" destination="vPf-c1-Xci" id="SRP-F1-NBW"/>
+                        <outlet property="sliderIndicator" destination="YJh-90-sB2" id="KRi-lE-DGt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qjB-Ab-6sy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -95,19 +125,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8WD-w7-SXr">
                                 <rect key="frame" x="20" y="80" width="75" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="nuS-Iu-Opw">
-                                <rect key="frame" x="20" y="152" width="280" height="6"/>
+                                <rect key="frame" x="20" y="188" width="280" height="6"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UDp-b8-1kt">
-                                <rect key="frame" x="20" y="123" width="75" height="21"/>
+                                <rect key="frame" x="20" y="159" width="75" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -119,33 +149,33 @@
                                 <connections>
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="oXE-gA-zdp"/>
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="xCr-NB-fma"/>
-                                    <action selector="changeBackground:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="gH1-HM-Fmi"/>
+                                    <action selector="showKeyboardAnimation:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="snF-Yd-NKY"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="OVQ-Qx-eXJ"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qO3-ak-lpx">
-                                <rect key="frame" x="20" y="166" width="75" height="21"/>
+                                <rect key="frame" x="20" y="202" width="75" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WEJ-V7-S43">
-                                <rect key="frame" x="150" y="166" width="150" height="21"/>
+                                <rect key="frame" x="150" y="202" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H0Y-Zf-Yzs">
-                                <rect key="frame" x="150" y="123" width="150" height="21"/>
+                                <rect key="frame" x="150" y="159" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="dQl-eU-Nxa">
-                                <rect key="frame" x="20" y="195" width="280" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dQl-eU-Nxa">
+                                <rect key="frame" x="20" y="123" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="18%"/>
@@ -156,6 +186,64 @@
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="DKm-vn-H4l"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" id="yJc-61-YyR">
+                                <rect key="frame" x="0.0" y="231" width="320" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HhG-iX-jhl">
+                                        <rect key="frame" x="152" y="8" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="deductPerson:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vy7-H6-om0"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1cv-C2-Hii">
+                                        <rect key="frame" x="190" y="11" width="72" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZPq-p1-jdZ">
+                                        <rect key="frame" x="20" y="11" width="104" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="JhV-WH-16S">
+                                        <rect key="frame" x="20" y="46" width="280" height="6"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Split:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RzU-0u-LUF">
+                                        <rect key="frame" x="20" y="60" width="116" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rNN-2J-yLx">
+                                        <rect key="frame" x="152" y="60" width="148" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KNz-JH-uzk">
+                                        <rect key="frame" x="270" y="8" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="addPerson:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PW3-oA-tte"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -173,6 +261,9 @@
                     <connections>
                         <outlet property="billField" destination="KiF-ht-QKj" id="Iqq-Ry-4JW"/>
                         <outlet property="horizontalBar" destination="nuS-Iu-Opw" id="SXv-33-4En"/>
+                        <outlet property="peopleNum" destination="1cv-C2-Hii" id="VRH-5A-9nV"/>
+                        <outlet property="perValue" destination="rNN-2J-yLx" id="bnH-c7-UFz"/>
+                        <outlet property="shareView" destination="yJc-61-YyR" id="UGQ-rH-kdI"/>
                         <outlet property="tipLabel" destination="H0Y-Zf-Yzs" id="pxk-Zf-BNk"/>
                         <outlet property="tipRate" destination="dQl-eU-Nxa" id="Y8p-v8-ZHy"/>
                         <outlet property="totalLabel" destination="WEJ-V7-S43" id="n1Z-1P-SSa"/>
