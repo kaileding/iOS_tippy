@@ -114,7 +114,11 @@ class ViewController: UIViewController {
     }
     
     func addSeparator(number: String) -> String {
-        var numStr: String = number
+        var numStr: String = (number=="") ? "0" : number
+        let zeroTest: Int = Int(numStr) ?? -1
+        if zeroTest >= 0 && numStr.characters.first == "0" {
+            numStr = String(numStr.characters.last!)
+        }
         let cStr = numStr.cStringUsingEncoding(8)!
         let cStrLen = cStr.count
         var i: Int = cStrLen-4
