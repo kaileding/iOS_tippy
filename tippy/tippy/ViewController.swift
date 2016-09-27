@@ -136,7 +136,9 @@ class ViewController: UIViewController {
     
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
         if self.billField.text != nil {
-            coder.encodeObject(self.billField.text, forKey: "billField")
+            let billStr = self.billField.text!
+            let noCurrencySignStr = billStr.stringByReplacingOccurrencesOfString(self.currencySymbol, withString: "")
+            coder.encodeObject(noCurrencySignStr, forKey: "billField")
         }
         super.encodeRestorableStateWithCoder(coder)
     }
@@ -144,7 +146,7 @@ class ViewController: UIViewController {
     override func decodeRestorableStateWithCoder(coder: NSCoder) {
         let oldBill = coder.decodeObjectForKey("billField")
         if oldBill != nil {
-            self.billField.text = oldBill as? String
+            self.billField.text = self.currencySymbol + (oldBill as? String)!
         }
         self.justRestore = true
         
