@@ -25,7 +25,11 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [√] List anything else that you can get done to improve the app functionality!
+    1. Animated subview of split bills for a number of people, use buttons to alter the number of people who will share the bill
+    2. Changing color theme when keyboard shows up or hides
+    3. Add setting item for default number of people who will share the bill, the setting control uses a continuous slider
+    4. Auto-correct textfield typings (converts "" to "0", "05" to "5", "0.578" to "0.57", etc.) besides adding thousands separators.
 
 ## Video Walkthrough 
 
